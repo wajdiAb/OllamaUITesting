@@ -1,9 +1,7 @@
-# utils/Driver_factory.py
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
-
 class DriverFactory:
     def __init__(self):
         self.browser = os.getenv('BROWSER', 'chrome')
@@ -32,14 +30,14 @@ class DriverFactory:
         return driver
     
     def _create_firefox_driver(self):
-
         options = FirefoxOptions()
         if self.headless:
             options.add_argument("--headless")
         options.add_argument(f"--width={self.width}")
         options.add_argument(f"--height={self.height}")
-        
+
         options.binary_location = "/usr/local/bin/firefox"
+        
         driver = webdriver.Firefox(options=options)
         driver.set_window_size(self.width, self.height)
         return driver

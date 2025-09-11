@@ -1,7 +1,6 @@
 selenium
 allure-pytest
 pytest
-allure
 
 locust
 dotenv
